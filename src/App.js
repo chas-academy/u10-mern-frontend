@@ -1,26 +1,26 @@
 import React, { Fragment } from 'react';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon } from '@fortawesome/free-regular-svg-icons';
 
-import Card from './components/Card';
-import Login from './pages/Login';
+import HomePage from './pages/HomePage';
+import ProtectedRoute from './ProtectedRoute';
 
 const App = () => (
   <Fragment>
-    <div className="wrapper">
-      <Card />
-      <Card />
-      <Card />
-    </div>
-    <Login />
+    <ProtectedRoute exact path="/" component={HomePage} />
     <ul className="footer">
       <li>
-        <FontAwesomeIcon icon={faMoon} className="icon active" />
-        Home
+        <NavLink exact to="/">
+          <FontAwesomeIcon icon={faMoon} className="icon" />
+          Home
+        </NavLink>
       </li>
       <li>
-        <FontAwesomeIcon icon={faMoon} className="icon" />
-        Home
+        <NavLink to="/login">
+          <FontAwesomeIcon icon={faMoon} className="icon" />
+          Home
+        </NavLink>
       </li>
       <li>
         <FontAwesomeIcon icon={faMoon} className="icon" />

@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import './index.scss';
+import store from './store';
 import App from './App';
 import LoginPage from './pages/LoginPage';
-import * as serviceWorker from './serviceWorker';
 import ProtectedRoute from './ProtectedRoute';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <Router>
-    <ProtectedRoute exact path="/" component={App} />
-    <Route path="/login" component={LoginPage} />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <Switch>
+        <ProtectedRoute exact path="/" component={App} />
+        <Route path="/login" component={LoginPage} />
+      </Switch>
+    </Router>
+  </Provider>,
   document.getElementById('root'),
 );
 

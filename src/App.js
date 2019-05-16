@@ -1,14 +1,11 @@
 import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon } from '@fortawesome/free-regular-svg-icons';
 
-import HomePage from './pages/HomePage';
-import ProtectedRoute from './ProtectedRoute';
-
 const App = () => (
   <Fragment>
-    <ProtectedRoute exact path="/" component={HomePage} />
     <ul className="footer">
       <li>
         <NavLink exact to="/">

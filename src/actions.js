@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-const authenticate = () => dispatch => axios('http://localhost:8080/user', {
+const authenticate = callback => dispatch => axios('http://localhost:8080/user', {
   method: 'get',
   withCredentials: true,
 }).then((response) => {
-  dispatch({ type: 'LOGIN_SUCCESS', payload: response.data });
+  dispatch({ type: 'AUTHENTICATED', payload: response.data });
 }).catch((error) => {
+  callback();
   throw (error);
 });
 

@@ -11,7 +11,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN_SUCCESS':
+    case 'AUTHENTICATED':
       return {
         ...state,
         user: action.payload.user,

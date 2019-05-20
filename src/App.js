@@ -9,7 +9,7 @@ import LoginPage from './pages/LoginPage';
 import { authenticate } from './actions';
 
 // eslint-disable-next-line no-shadow
-const App = ({ authenticate, isAuthenticating }) => {
+const App = ({ authenticate }) => {
   useEffect(() => {
     authenticate();
   });
@@ -17,10 +17,7 @@ const App = ({ authenticate, isAuthenticating }) => {
   return (
     <Router>
       <Switch>
-        {isAuthenticating
-          ? null
-          : <ProtectedRoute exact path="/" component={HomePage} />
-        }
+        <ProtectedRoute exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
       </Switch>
     </Router>
@@ -29,11 +26,6 @@ const App = ({ authenticate, isAuthenticating }) => {
 
 App.propTypes = {
   authenticate: PropTypes.func.isRequired,
-  isAuthenticating: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => ({
-  isAuthenticating: state.isAuthenticating,
-});
-
-export default connect(mapStateToProps, { authenticate })(App);
+export default connect(null, { authenticate })(App);

@@ -1,17 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
 import './index.scss';
+import store from './store';
 import App from './App';
-import LoginPage from './pages/LoginPage';
 import * as serviceWorker from './serviceWorker';
-import ProtectedRoute from './ProtectedRoute';
 
 ReactDOM.render(
-  <Router>
-    <ProtectedRoute exact path="/" component={App} />
-    <Route path="/login" component={LoginPage} />
-  </Router>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root'),
 );
 

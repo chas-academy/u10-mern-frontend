@@ -1,37 +1,31 @@
-import React, { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon } from '@fortawesome/free-regular-svg-icons';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import HomePage from './pages/HomePage';
 import ProtectedRoute from './ProtectedRoute';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import { authenticate } from './actions';
 
-const App = () => (
-  <Fragment>
-    <ProtectedRoute exact path="/" component={HomePage} />
-    <ul className="footer">
-      <li>
-        <NavLink exact to="/">
-          <FontAwesomeIcon icon={faMoon} className="icon" />
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/login">
-          <FontAwesomeIcon icon={faMoon} className="icon" />
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <FontAwesomeIcon icon={faMoon} className="icon" />
-        Home
-      </li>
-      <li>
-        <FontAwesomeIcon icon={faMoon} className="icon" />
-        Home
-      </li>
-    </ul>
-  </Fragment>
-);
+// eslint-disable-next-line no-shadow
+const App = ({ authenticate }) => {
+  useEffect(() => {
+    authenticate();
+  });
 
-export default App;
+  return (
+    <Router>
+      <Switch>
+        <ProtectedRoute exact path="/" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
+      </Switch>
+    </Router>
+  );
+};
+
+App.propTypes = {
+  authenticate: PropTypes.func.isRequired,
+};
+
+export default connect(null, { authenticate })(App);

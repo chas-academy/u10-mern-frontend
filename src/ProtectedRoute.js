@@ -1,31 +1,28 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
-
-import { authenticate } from './actions';
+import { Route, Redirect } from 'react-router-dom';
 
 const ProtectedRoute = ({
-  // eslint-disable-next-line no-shadow
-  authenticate, match, location, history, ...rest
-}) => {
-  useEffect(() => {
-    authenticate(() => history.push('/login'));
-  });
-
-  return (
-    <Route {...rest} />
-  );
-};
+  component: Component, isAuthenticated, ...rest
+}) => (
+  <Route
+    {...rest}
+    render={props => (isAuthenticated
+      ? <Component {...props} />
+      : <Redirect to="/login" />
+    )
+    }
+  />
+);
 
 ProtectedRoute.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  match: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  location: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  history: PropTypes.object.isRequired,
-  authenticate: PropTypes.func.isRequired,
+  component: PropTypes.elementType.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
-export default withRouter(connect(null, { authenticate })(ProtectedRoute));
+const mapStateToProps = state => ({
+  isAuthenticated: state.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(ProtectedRoute);

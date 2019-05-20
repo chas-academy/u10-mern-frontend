@@ -6,16 +6,23 @@ const initialState = {
     name: null,
     email: null,
   },
+  isAuthenticating: true,
   isAuthenticated: false,
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'AUTHENTICATED':
+    case 'AUTHENTICATE_SUCCESS':
       return {
         ...state,
         user: action.payload.user,
-        isAuthenticated: action.payload.success,
+        isAuthenticating: false,
+        isAuthenticated: true,
+      };
+    case 'AUTHENTICATE_FAILURE':
+      return {
+        ...state,
+        isAuthenticating: false,
       };
     default:
       return state;

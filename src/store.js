@@ -8,6 +8,7 @@ const initialState = {
   },
   isAuthenticating: true,
   isAuthenticated: false,
+  courses: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -23,6 +24,15 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticating: false,
+      };
+    case 'COURSES_SUCCESS':
+      return {
+        ...state,
+        courses: action.payload,
+      };
+    case 'COURSES_FAILURE':
+      return {
+        ...state,
       };
     default:
       return state;

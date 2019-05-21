@@ -14,4 +14,15 @@ const test = () => {
   console.log('hi');
 };
 
-export { authenticate, test };
+const getCourses = () => (dispatch) => {
+  axios('http://localhost:8080/courses', {
+    method: 'get',
+  }).then((response) => {
+    dispatch({ type: 'COURSES_SUCCESS', payload: response.data });
+  }).catch((error) => {
+    dispatch({ type: 'COURSES_FAILURE' });
+    throw (error);
+  });
+};
+
+export { authenticate, getCourses, test };

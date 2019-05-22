@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute';
 import HomePage from './pages/HomePage';
-import CoursesPage from './pages/CoursesPage';
+import Library from './pages/Library';
 import LoginPage from './pages/LoginPage';
 import { authenticate } from './actions';
 
@@ -19,7 +19,8 @@ const App = ({ authenticate }) => {
     <Router>
       <Switch>
         <ProtectedRoute exact path="/" component={HomePage} />
-        <ProtectedRoute path="/library" component={CoursesPage} />
+        <ProtectedRoute path="/library" component={Library} />
+        {/* <ProtectedRoute path="/library" component={Course} /> */}
         <Route path="/login" component={LoginPage} />
       </Switch>
     </Router>

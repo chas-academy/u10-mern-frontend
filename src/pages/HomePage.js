@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Card from '../components/Card';
+import AudioPlayer from '../components/AudioPlayer';
 
 const HomePage = () => (
   <div>
@@ -9,6 +10,7 @@ const HomePage = () => (
         <Card />
         <Card />
         <Card />
+        <AudioPlayer />
       </div>
     </div>
   </div>

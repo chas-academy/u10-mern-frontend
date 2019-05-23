@@ -18,7 +18,24 @@ const getCourses = () => (dispatch) => {
   axios('http://localhost:8080/courses', {
     method: 'get',
   }).then((response) => {
-    dispatch({ type: 'COURSES_SUCCESS', payload: response.data });
+    // Restructure courses and sessions into associative objects instead of arrays
+
+    const newCourses = {};
+
+    response.data.forEach((course) => {
+      const courseObject = { ...course };
+      const newSessions = course.sessions;
+
+      courseObject.sessions = {};
+
+      newSessions.forEach((session) => {
+        courseObject.sessions[session._id] = session;
+      });
+
+      newCourses[course._id] = courseObject;
+    });
+
+    dispatch({ type: 'COURSES_SUCCESS', payload: newCourses });
   }).catch((error) => {
     dispatch({ type: 'COURSES_FAILURE' });
     throw (error);

@@ -8,7 +8,7 @@ const initialState = {
   },
   isAuthenticating: true,
   isAuthenticated: false,
-  courses: [],
+  courses: {},
 };
 
 const rootReducer = (state = initialState, action) => {

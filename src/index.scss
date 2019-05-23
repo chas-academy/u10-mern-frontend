@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
 
-$mdc-typography-styles-headline6: (font-family: unquote("Nunito, sans-serif"), font-weight: 600, margin: 2px 0.67em);
+$mdc-typography-styles-headline6: (font-family: unquote("Nunito, sans-serif"), font-weight: 700, margin-bottom: 3px);
+$mdc-typography-styles-subtitle2: (font-family: unquote("Nunito, sans-serif"), margin-top: 3px);
 
 @import "~@material/typography/mdc-typography";
 @import "~@material/elevation/mdc-elevation";
+@import "~@material/fab/mdc-fab";
 @import "~@material/list/mdc-list";
 
 body {
@@ -12,18 +14,37 @@ body {
   margin: 0;
 }
 
-.demo {
-  @include mdc-list-item-graphic-fill-color(#7f9bcf);
-  @include mdc-list-item-graphic-ink-color(white);
-}
-
-h1, p {
-  margin-left: 20px;
-}
-
 .header {
   background-color: #7f9bcf;
   color: white;
-  padding: 10px;
+  padding: 50px 10px 10px 30px;
   box-sizing: border-box;
+}
+
+.mdc-fab {
+  position:fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  @include mdc-fab-accessible(white);
+}
+
+.mdc-list-item {
+  @include mdc-list-item-graphic-fill-color(rgba(127, 155, 207, 0.2));
+  @include mdc-list-item-graphic-ink-color(#303030);
+  @include mdc-list-item-meta-ink-color(rgba(127, 155, 207, 0.8));
+}
+
+.mdc-list-item--disabled {
+  @include mdc-list-item-graphic-fill-color(rgba(201, 201, 201, 0.2));
+  @include mdc-list-item-graphic-ink-color(#616263);
+  @include mdc-list-item-meta-ink-color(#989898);
+}
+
+.mdc-list--avatar-list.mdc-list--dense .mdc-list-item__graphic {
+  border-radius: 3px;
+}
+
+.mdc-list-item__graphic.material-icons {
+  font-size: 18px;
 }

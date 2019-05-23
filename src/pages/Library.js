@@ -12,20 +12,15 @@ const Library = ({ getCourses, courses }) => {
     getCourses();
   }, [getCourses]);
 
-  const courseCards = [];
-
-  Object.keys(courses).forEach((key) => {
-    courseCards.push(
-      <Link to={`/library/${key}`} key={key}>
-        <Card2
-          title={courses[key].name}
-          meta={`${Object.keys(courses[key].sessions).length} sessions`}
-          key={courses[key]._id}
-        />
-      </Link>,
-    );
-  });
-
+  const courseCards = Object.keys(courses).map(key => (
+    <Link to={`/library/${key}`} key={key}>
+      <Card2
+        title={courses[key].name}
+        meta={`${Object.keys(courses[key].sessions).length} sessions`}
+        key={courses[key]._id}
+      />
+    </Link>
+  ));
 
   return (
     <div className="wrapper">

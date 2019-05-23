@@ -9,18 +9,17 @@ import Card2 from '../components/Card2';
 const Course = (props) => {
   const { course } = props;
 
-  const sessionCards = [];
+  let sessionCards;
 
   // When course has loaded in
   if (course) {
-    Object.keys(course.sessions).forEach(sessionId => sessionCards.push(
+    sessionCards = Object.keys(course.sessions).map(sessionId => (
       <Card2
         title={course.sessions[sessionId].title}
         meta={`${course.sessions[sessionId].duration} seconds`}
         key={sessionId}
-      />,
+      />
     ));
-    console.log(course, props);
   }
 
   return (

@@ -1,86 +1,29 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,600');
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
+$mdc-typography-styles-headline6: (font-family: unquote("Nunito, sans-serif"), font-weight: 600, margin: 2px 0.67em);
+
+@import "~@material/typography/mdc-typography";
+@import "~@material/elevation/mdc-elevation";
+@import "~@material/list/mdc-list";
 
 body {
   height: 100%;
   background-color: #f5f5f5;
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
   margin: 0;
 }
 
-.card {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  color: #112b3a;
-  padding: 6px;
-  margin-top: 2px;
+.demo {
+  @include mdc-list-item-graphic-fill-color(#7f9bcf);
+  @include mdc-list-item-graphic-ink-color(white);
 }
 
-.image {
-  width: 50px;
-  margin-right: 16px;
-
-  img {
-    width: 100%;
-    border-radius: 5px;
-    vertical-align: middle;
-  }
+h1, p {
+  margin-left: 20px;
 }
 
-.content {
-  align-self: center;
-
-  .title {
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-
-  .meta {
-    font-size: 0.8rem;
-    color: #778b96;
-  }
-}
-
-.extra {
-  margin-left: auto;
-  margin-right: 16px;
-
-  .favorite {
-    font-size: 1.2rem;
-  }
-}
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 80px;
-  padding: 8px 0;
-  margin: 0;
-  background-color: #3f526a;
-  color: #d9dde2;
-  list-style: none;
-
-  li {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: 0.8rem;
-  }
-
-  .icon {
-    padding: 12px;
-    border-radius: 14px;
-    font-size: 1.5rem;
-    color: white;
-    margin-bottom: 4px;
-  }
-
-  .active {
-    background: linear-gradient(to right, #586ed9, #7196d3, #89b5ff, #d2e0ff);
-  }
+.header {
+  background-color: #7f9bcf;
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
 }

@@ -6,18 +6,23 @@ import Card2 from '../components/Card2';
 import { getCourses } from '../actions';
 
 // eslint-disable-next-line no-shadow
-const CoursesPage = ({ getCourses, courses }) => {
+const Library = ({ getCourses, courses }) => {
   useEffect(() => {
     getCourses();
   }, [getCourses]);
 
-  const courseCards = courses.map(course => (
-    <Card2
-      title={course.name}
-      meta={`${course.sessions.length} sessions`}
-      key={course._id}
-    />
-  ));
+  const courseCards = [];
+
+  Object.keys(courses).forEach((key) => {
+    courseCards.push(
+      <Card2
+        title={courses[key].name}
+        meta={`${Object.keys(courses[key].sessions).length} sessions`}
+        key={courses[key]._id}
+      />,
+    );
+  });
+
 
   return (
     <div className="wrapper">
@@ -26,13 +31,13 @@ const CoursesPage = ({ getCourses, courses }) => {
   );
 };
 
-CoursesPage.propTypes = {
+Library.propTypes = {
   getCourses: PropTypes.func.isRequired,
-  courses: PropTypes.arrayOf(PropTypes.object).isRequired,
+  courses: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 const mapStateToProps = state => ({
   courses: state.courses,
 });
 
-export default connect(mapStateToProps, { getCourses })(CoursesPage);
+export default connect(mapStateToProps, { getCourses })(Library);

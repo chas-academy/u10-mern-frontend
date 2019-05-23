@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Card2 from '../components/Card2';
 import { getCourses } from '../actions';
@@ -15,11 +16,13 @@ const Library = ({ getCourses, courses }) => {
 
   Object.keys(courses).forEach((key) => {
     courseCards.push(
-      <Card2
-        title={courses[key].name}
-        meta={`${Object.keys(courses[key].sessions).length} sessions`}
-        key={courses[key]._id}
-      />,
+      <Link to={`/library/${key}`} key={key}>
+        <Card2
+          title={courses[key].name}
+          meta={`${Object.keys(courses[key].sessions).length} sessions`}
+          key={courses[key]._id}
+        />
+      </Link>,
     );
   });
 

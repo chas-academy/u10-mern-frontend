@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Card2 from '../components/Card2';
+import Item from '../components/Item';
 
 
 // eslint-disable-next-line no-shadow
@@ -13,18 +13,28 @@ const Course = (props) => {
 
   // When course has loaded in
   if (course) {
-    sessionCards = Object.keys(course.sessions).map(sessionId => (
-      <Card2
+    sessionCards = Object.keys(course.sessions).map((sessionId, index) => (
+      <Item
+        index={index + 1}
         title={course.sessions[sessionId].title}
-        meta={`${course.sessions[sessionId].duration} seconds`}
+        duration={`${course.sessions[sessionId].duration} seconds`}
         key={sessionId}
       />
     ));
   }
 
   return (
-    <div className="wrapper">
-      {sessionCards}
+    <div>
+      <button type="button" className="mdc-fab mdc-fab--mini" aria-label="Favorite">
+        <span className="mdc-fab__icon material-icons">keyboard_arrow_left</span>
+      </button>
+      <div className="header">
+        <h1 className="mdc-typography--headline6">{course.name}</h1>
+        <p className="mdc-typography--subtitle2">Live happier and healthier by learning the fundamentals of meditation and mindfulness.</p>
+      </div>
+      <ul className="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
+        {sessionCards}
+      </ul>
     </div>
   );
 };

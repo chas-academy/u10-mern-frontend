@@ -6,9 +6,7 @@ import Item from '../components/Item';
 
 
 // eslint-disable-next-line no-shadow
-const Course = (props) => {
-  const { course } = props;
-
+const Course = ({ course, subscription }) => {
   let sessionCards;
 
   // When course has loaded in
@@ -19,6 +17,7 @@ const Course = (props) => {
         title={course.sessions[sessionId].title}
         duration={`${course.sessions[sessionId].duration} seconds`}
         key={sessionId}
+        locked={index > 1 && subscription.active === false}
       />
     ));
   }
@@ -45,10 +44,16 @@ Course.propTypes = {
     PropTypes.object,
     PropTypes.string,
   ]).isRequired,
+  subscription: PropTypes.shape({ active: PropTypes.bool }),
+};
+
+Course.defaultProps = {
+  subscription: {},
 };
 
 const mapStateToProps = (state, ownProps) => ({
   course: state.courses[ownProps.match.params.course_id],
+  subscription: state.user.subscription,
 });
 
 export default connect(mapStateToProps)(Course);

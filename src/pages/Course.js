@@ -44,11 +44,7 @@ Course.propTypes = {
     PropTypes.object,
     PropTypes.string,
   ]).isRequired,
-  subscription: PropTypes.shape({ active: PropTypes.bool }),
-};
-
-Course.defaultProps = {
-  subscription: {},
+  subscription: PropTypes.shape({ active: PropTypes.bool }).isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => ({

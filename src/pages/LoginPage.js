@@ -3,7 +3,7 @@ import './LoginPage.scss';
 
 const LoginPage = () => (
   <div className="flexbox">
-    <a href="http://localhost:8080/auth/google">Sign In</a>
+    <a href="https://localhost:8080/auth/google">Sign In</a>
     <button type="button" className="google-button">
       <span className="google-button__icon">
         <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg">

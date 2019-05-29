@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const authenticate = () => dispatch => axios('http://localhost:8080/user', {
+const authenticate = () => dispatch => axios('https://localhost:8080/api/user', {
   method: 'get',
   withCredentials: true,
 }).then((response) => {
@@ -15,8 +15,9 @@ const test = () => {
 };
 
 const getCourses = () => (dispatch) => {
-  axios('http://localhost:8080/courses', {
+  axios('https://localhost:8080/api/courses', {
     method: 'get',
+    withCredentials: true,
   }).then((response) => {
     // Restructure courses and sessions into associative objects instead of arrays
 

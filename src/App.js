@@ -16,7 +16,7 @@ const App = ({ authenticate, getCourses }) => {
   useEffect(() => {
     authenticate();
     getCourses();
-  });
+  }, []);
 
   return (
     <Router>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const authenticate = () => dispatch => axios(`${process.env.SERVER}/api/user`, {
+const authenticate = () => dispatch => axios(`${process.env.REACT_APP_SERVER}/api/user`, {
   method: 'get',
   withCredentials: true,
 }).then((response) => {
@@ -15,7 +15,7 @@ const test = () => {
 };
 
 const getCourses = () => (dispatch) => {
-  axios(`${process.env.SERVER}/api/courses`, {
+  axios(`${process.env.REACT_APP_SERVER}/api/courses`, {
     method: 'get',
     withCredentials: true,
   }).then((response) => {

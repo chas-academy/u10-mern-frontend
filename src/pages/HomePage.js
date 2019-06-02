@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import BackButton from '../components/BackButton';
 import Item from '../components/Item';
 
 const HomePage = () => (
-  <div>
+  <Fragment>
     <BackButton />
     <div className="header">
-      <h1 className="mdc-typography--headline6">Basics</h1>
-      <p className="mdc-typography--subtitle2">Live happier and healthier by learning the fundamentals of meditation and mindfulness.</p>
+      <h1 className="mdc-typography--headline5 title">Basics</h1>
+      <p className="mdc-typography--subtitle2 subtitle">Live happier and healthier by learning the fundamentals of meditation and mindfulness.</p>
     </div>
     <ul className="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
       <Item index="1" title="Day One" duration="8 minutes, 47 seconds" locked={false} />
@@ -26,7 +26,7 @@ const HomePage = () => (
       <Item index="11" title="Day Thirteen" duration="8 minutes, 47 seconds" locked />
       <Item index="11" title="Day Fourteen" duration="8 minutes, 47 seconds" locked />
     </ul>
-  </div>
+  </Fragment>
 );
 
 export default HomePage;

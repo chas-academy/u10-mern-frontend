@@ -5,9 +5,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
+import PortfolioPage from './pages/PortfolioPage';
 import LibraryPage from './pages/LibraryPage';
+import TimerPage from './pages/TimerPage';
 import ProgressPage from './pages/ProgressPage';
+import LoginPage from './pages/LoginPage';
 import Tabs from './components/Tabs';
 import { authenticate } from './actions';
 
@@ -20,8 +22,10 @@ const App = ({ authenticate }) => {
   return (
     <Router>
       <div className="layout">
-        <ProtectedRoute exact path="/" component={HomePage} />
-        <ProtectedRoute path="/library" component={LibraryPage} />
+        <Route exact path="/" component={HomePage} />
+        <ProtectedRoute path="/portfolio" component={PortfolioPage} />
+        <Route path="/library" component={LibraryPage} />
+        <ProtectedRoute path="/timer" component={TimerPage} />
         <ProtectedRoute path="/progress" component={ProgressPage} />
         <Route path="/login" component={LoginPage} />
       </div>

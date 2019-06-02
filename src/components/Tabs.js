@@ -19,6 +19,12 @@ const Tabs = ({ location }) => (
         </NavLink>
       </li>
       <li className="tab">
+        <NavLink to="/timer">
+          <span className="material-icons">timer</span>
+          Timer
+        </NavLink>
+      </li>
+      <li className="tab">
         <NavLink to="/progress">
           <span className="material-icons">trending_up</span>
         Progress

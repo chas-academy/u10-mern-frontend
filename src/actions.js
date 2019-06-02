@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const authenticate = () => dispatch => axios(`${process.env.REACT_APP_SERVER}/api/user`, {
+const authenticate = () => dispatch => axios('https://localhost:8080/api/user', {
   method: 'get',
   withCredentials: true,
 }).then((response) => {

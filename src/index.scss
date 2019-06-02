@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Shojumaru&display=swap');
 
+$mdc-typography-styles-headline4: (font-family: unquote("Shojumaru, cursive"));
 $mdc-typography-styles-headline6: (font-family: unquote("Nunito, sans-serif"), font-weight: 700, margin-bottom: 3px);
 $mdc-typography-styles-subtitle2: (font-family: unquote("Nunito, sans-serif"), margin-top: 3px);
 
@@ -8,32 +9,103 @@ $mdc-typography-styles-subtitle2: (font-family: unquote("Nunito, sans-serif"), m
 @import "~@material/fab/mdc-fab";
 @import "~@material/list/mdc-list";
 
-body {
+html,
+body,
+#root {
   height: 100%;
+}
+
+body {
   background-color: #f5f5f5;
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
+.layout {
+  margin-bottom: 54px;
+}
+
+//login page
+.wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ninja-animation {
+  width: 100%;
+}
+
+.socials {
+  width: 220px;
+  margin-top: 10px;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 200px;
+  background: white;
+  color: #737373;
+  border-radius: 5px;
+  border-width: 0;
+  margin: 10px;
+  padding: 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+@mixin social-button__icon($icon) {
+  background: url("./assets/images/#{$icon}.svg");
+  vertical-align: middle;
+  margin: 8px 0 8px 16px;
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+}
+
+.social-button__text {
+  margin: 0 12px;
+  font-size: 14px;
+  font-family: 'Roboto', arial, sans-serif;
+  text-decoration: none;
+}
+
+.facebook-button__icon {
+  @include social-button__icon("facebook");
+}
+
+.google-button__icon {
+  @include social-button__icon("google");
+}
+
+//header for course page
 .header {
-  background-color: #7f9bcf;
+  background-color: #7c98ca;
   color: white;
   padding: 50px 10px 10px 30px;
   box-sizing: border-box;
 }
 
+//back button
 .mdc-fab {
-  position: fixed;
+  @include mdc-fab-accessible(white);
+  position:fixed;
   top: 10px;
   left: 10px;
   z-index: 1000;
-
-  @include mdc-fab-accessible(white);
 }
 
+//session list in course page
 .mdc-list-item {
   @include mdc-list-item-graphic-fill-color(rgba(127, 155, 207, 0.2));
   @include mdc-list-item-graphic-ink-color(#303030);
-  @include mdc-list-item-meta-ink-color(rgba(127, 155, 207, 0.8));
+  @include mdc-list-item-meta-ink-color(rgba(124, 152, 202, 0.8));
 }
 
 .mdc-list-item--disabled {
@@ -48,4 +120,31 @@ body {
 
 .mdc-list-item__graphic.material-icons {
   font-size: 18px;
+}
+
+//navigation
+.tabs {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 8px 0;
+  margin: 0;
+  background-color: #475c77;
+  list-style: none;
+
+  .tab a {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #afb4b7;
+    font-family: Nunito, sans-serif;
+  }
+
+  .tab .active {
+    color: #e5e9ee;
+  }
 }

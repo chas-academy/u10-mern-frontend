@@ -1,12 +1,11 @@
 import React from 'react';
 
+import BackButton from '../components/BackButton';
 import Item from '../components/Item';
 
 const HomePage = () => (
   <div>
-    <button type="button" className="mdc-fab mdc-fab--mini" aria-label="Favorite">
-      <span className="mdc-fab__icon material-icons">keyboard_arrow_left</span>
-    </button>
+    <BackButton />
     <div className="header">
       <h1 className="mdc-typography--headline6">Basics</h1>
       <p className="mdc-typography--subtitle2">Live happier and healthier by learning the fundamentals of meditation and mindfulness.</p>
@@ -23,9 +22,9 @@ const HomePage = () => (
       <Item index="9" title="Day Nine" duration="8 minutes, 47 seconds" locked />
       <Item index="10" title="Day Ten" duration="8 minutes, 47 seconds" locked />
       <Item index="11" title="Day Eleven" duration="8 minutes, 47 seconds" locked />
-      <Item index="11" title="Day Eleven" duration="8 minutes, 47 seconds" locked />
-      <Item index="11" title="Day Eleven" duration="8 minutes, 47 seconds" locked />
-      <Item index="11" title="Day Eleven" duration="8 minutes, 47 seconds" locked />
+      <Item index="11" title="Day Twelve" duration="8 minutes, 47 seconds" locked />
+      <Item index="11" title="Day Thirteen" duration="8 minutes, 47 seconds" locked />
+      <Item index="11" title="Day Fourteen" duration="8 minutes, 47 seconds" locked />
     </ul>
   </div>
 );

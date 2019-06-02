@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const authenticate = () => dispatch => axios('https://localhost:8080/user', {
+const authenticate = () => dispatch => axios('https://localhost:8080/api/user', {
   method: 'get',
   withCredentials: true,
 }).then((response) => {

@@ -1,18 +1,25 @@
 import React from 'react';
-import './LoginPage.scss';
+
+import ninjaAnimation from '../assets/images/ninja.gif';
 
 const LoginPage = () => (
-  <div className="flexbox">
-    <a href="https://localhost:8080/auth/google">Sign In</a>
-    <a href="https://localhost:8080/auth/facebook">Facebook Sign In</a>
-    <button type="button" className="facebook-button">
-      <span className="facebook-button__icon" />
-      <span className="facebook-button__text">Sign in with Facebook</span>
-    </button>
-    <button type="button" className="google-button">
-      <span className="google-button__icon" />
-      <span className="google-button__text">Sign in with Google</span>
-    </button>
+  <div className="wrapper">
+    <img src={ninjaAnimation} alt="" className="ninja-animation" />
+    <h1 className="mdc-typography--headline4">Mern</h1>
+    <div className="socials">
+      <a href="https://localhost:8080/auth/facebook">
+        <button type="button" className="social-button">
+          <span className="facebook-button__icon" />
+          <span className="social-button__text">Sign in with Facebook</span>
+        </button>
+      </a>
+      <a href="https://localhost:8080/auth/google">
+        <button type="button" className="social-button">
+          <span className="google-button__icon" />
+          <span className="social-button__text">Sign in with Google</span>
+        </button>
+      </a>
+    </div>
   </div>
 );
 

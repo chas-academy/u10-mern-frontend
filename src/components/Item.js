@@ -21,10 +21,14 @@ const Item = ({
 );
 
 Item.propTypes = {
-  index: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   duration: PropTypes.string.isRequired,
-  locked: PropTypes.bool.isRequired,
+  locked: PropTypes.bool,
+};
+
+Item.defaultProps = {
+  locked: false,
 };
 
 export default Item;

@@ -7,15 +7,9 @@ $mdc-typography-font-family: 'Source Sans Pro', sans-serif;;
 @import "~@material/fab/mdc-fab";
 @import "~@material/list/mdc-list";
 
-html,
-body,
-#root {
-  height: 100%;
-}
-
 body {
   background-color: #f5f5f5;
-  color: #404040;
+  color: #303030;
   margin: 0;
 }
 
@@ -24,7 +18,7 @@ a {
 }
 
 .layout {
-  margin-bottom: 54px;
+  margin-bottom: 53px;
 }
 
 .page-title {
@@ -137,6 +131,7 @@ a {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 70px;
 }
 
 .course {

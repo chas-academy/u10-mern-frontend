@@ -22,9 +22,9 @@ const App = ({ authenticate }) => {
   return (
     <Router>
       <div className="layout">
-        <Route exact path="/" component={HomePage} />
+        <ProtectedRoute exact path="/" component={HomePage} />
         <ProtectedRoute path="/portfolio" component={ProfilePage} />
-        <Route path="/library" component={LibraryPage} />
+        <ProtectedRoute path="/library" component={LibraryPage} />
         <ProtectedRoute path="/timer" component={TimerPage} />
         <ProtectedRoute path="/progress" component={ProgressPage} />
         <Route path="/login" component={LoginPage} />

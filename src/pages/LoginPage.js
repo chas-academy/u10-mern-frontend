@@ -3,9 +3,9 @@ import React from 'react';
 import ninjaAnimation from '../assets/images/ninja.gif';
 
 const LoginPage = () => (
-  <div className="wrapper">
+  <div className="login-page">
     <img src={ninjaAnimation} alt="" className="ninja-animation" />
-    <h1 className="mdc-typography--headline4">Mern</h1>
+    <h1 className="mdc-typography--headline4 logo">Mern</h1>
     <div className="socials">
       <a href="https://localhost:8080/auth/facebook">
         <button type="button" className="social-button">

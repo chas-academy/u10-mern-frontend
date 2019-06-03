@@ -15,7 +15,7 @@ const test = () => {
 };
 
 const getCourses = () => (dispatch) => {
-  axios(`${process.env.REACT_APP_SERVER}/api/courses`, {
+  axios('https://localhost:8080/api/courses', {
     method: 'get',
     withCredentials: true,
   }).then((response) => {

@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Item from '../components/Item';
+import BackButton from '../components/BackButton';
 
 
 // eslint-disable-next-line no-shadow
-const Course = ({ course, subscription }) => {
+const CoursePage = ({ course, subscription }) => {
   let sessionCards;
 
   // When course has loaded in
@@ -16,20 +17,18 @@ const Course = ({ course, subscription }) => {
         index={index + 1}
         title={course.sessions[sessionId].title}
         duration={`${course.sessions[sessionId].duration} seconds`}
-        key={sessionId}
         locked={index > 1 && subscription.active === false}
+        key={sessionId}
       />
     ));
   }
 
   return (
     <div>
-      <button type="button" className="mdc-fab mdc-fab--mini" aria-label="Favorite">
-        <span className="mdc-fab__icon material-icons">keyboard_arrow_left</span>
-      </button>
+      <BackButton />
       <div className="header">
-        <h1 className="mdc-typography--headline6">{course.name}</h1>
-        <p className="mdc-typography--subtitle2">Live happier and healthier by learning the fundamentals of meditation and mindfulness.</p>
+        <h1 className="mdc-typography--headline5 title">Basics</h1>
+        <p className="mdc-typography--subtitle2 subtitle">Live happier and healthier by learning the fundamentals of meditation and mindfulness.</p>
       </div>
       <ul className="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
         {sessionCards}
@@ -39,7 +38,7 @@ const Course = ({ course, subscription }) => {
 };
 
 
-Course.propTypes = {
+CoursePage.propTypes = {
   course: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.string,
@@ -52,4 +51,4 @@ const mapStateToProps = (state, ownProps) => ({
   subscription: state.user.subscription,
 });
 
-export default connect(mapStateToProps)(Course);
+export default connect(mapStateToProps)(CoursePage);

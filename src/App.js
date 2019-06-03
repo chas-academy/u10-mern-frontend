@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
-import PortfolioPage from './pages/PortfolioPage';
+import ProfilePage from './pages/ProfilePage';
 import LibraryPage from './pages/LibraryPage';
 import TimerPage from './pages/TimerPage';
 import ProgressPage from './pages/ProgressPage';
@@ -23,7 +23,7 @@ const App = ({ authenticate }) => {
     <Router>
       <div className="layout">
         <Route exact path="/" component={HomePage} />
-        <ProtectedRoute path="/portfolio" component={PortfolioPage} />
+        <ProtectedRoute path="/portfolio" component={ProfilePage} />
         <Route path="/library" component={LibraryPage} />
         <ProtectedRoute path="/timer" component={TimerPage} />
         <ProtectedRoute path="/progress" component={ProgressPage} />

@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const PortfolioPage = ({ user }) => (
+const ProfilePage = ({ user }) => (
   <div>
     <p>{user.name}</p>
   </div>
 );
 
-PortfolioPage.propTypes = {
+ProfilePage.propTypes = {
   user: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
@@ -16,4 +16,4 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(PortfolioPage);
+export default connect(mapStateToProps)(ProfilePage);

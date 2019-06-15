@@ -15,7 +15,7 @@ const Item = ({
         <span className="mdc-list-item__secondary-text">{duration}</span>
       </span>
       {handlePlay
-          && <button type="submit" className="mdc-list-item__meta material-icons" onClick={handlePlay}>play_circle_filled</button>
+          && <button type="button" className="mdc-list-item__meta material-icons" onClick={handlePlay}>play_circle_filled</button>
         }
     </li>
     <li role="separator" className="mdc-list-divider mdc-list-divider--padded" />

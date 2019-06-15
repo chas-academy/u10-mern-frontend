@@ -46,5 +46,5 @@ const setTrack = (courseId, sessionId) => (dispatch) => {
 };
 
 export {
-  authenticate, getCourses, setTrack, test,
+  authenticate, getCourses, setTrack,
 };

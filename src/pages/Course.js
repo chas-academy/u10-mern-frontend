@@ -6,7 +6,6 @@ import Item from '../components/Item';
 import AudioPlayer from '../components/AudioPlayer';
 import { setTrack } from '../actions';
 
-
 const Course = ({
   // eslint-disable-next-line no-shadow
   course, subscription, currentTrack, setTrack,

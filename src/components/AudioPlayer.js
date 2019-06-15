@@ -1,9 +1,26 @@
 import React from 'react';
-import track from '../assets/audio/example.mp3';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const AudioPlayer = () => (
+
+// import track from '../assets/audio/example.mp3';
+
+const AudioPlayer = ({ currentTrack }) => (
   // eslint-disable-next-line jsx-a11y/media-has-caption
-  <audio controls src={track} controlsList="nodownload" />
+  <audio controls src={currentTrack} controlsList="nodownload" />
 );
 
-export default AudioPlayer;
+AudioPlayer.propTypes = {
+  currentTrack: PropTypes.oneOf([PropTypes.string, PropTypes.bool]),
+};
+
+AudioPlayer.defaultProps = {
+  currentTrack: false,
+};
+
+// Map state to props
+const mapStateToProps = state => ({
+  currentTrack: state.currentTrack,
+});
+
+export default connect(mapStateToProps)(AudioPlayer);

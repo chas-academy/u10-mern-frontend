@@ -10,9 +10,6 @@ const authenticate = () => dispatch => axios('https://localhost:8080/api/user', 
   throw (error);
 });
 
-const test = () => {
-  console.log('hi');
-};
 
 const getCourses = () => (dispatch) => {
   axios(`${process.env.REACT_APP_SERVER}/api/courses`, {
@@ -43,4 +40,11 @@ const getCourses = () => (dispatch) => {
   });
 };
 
-export { authenticate, getCourses, test };
+const setTrack = (courseId, sessionId) => (dispatch) => {
+  const track = `https://moment23.amin.nu/api/courses/${courseId}/sessions/${sessionId}/audio`;
+  dispatch({ type: 'SET_TRACK', payload: track });
+};
+
+export {
+  authenticate, getCourses, setTrack, test,
+};

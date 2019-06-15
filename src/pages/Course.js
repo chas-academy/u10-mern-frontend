@@ -3,11 +3,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Item from '../components/Item';
+import AudioPlayer from '../components/AudioPlayer';
+import { setTrack } from '../actions';
 
 
-// eslint-disable-next-line no-shadow
-const Course = ({ course, subscription }) => {
+const Course = ({
+  // eslint-disable-next-line no-shadow
+  course, subscription, currentTrack, setTrack,
+}) => {
   let sessionCards;
+
+  // Set and play the track
+  const handlePlay = (sessionId, e) => {
+    e.preventDefault();
+
+    setTrack(course._id, sessionId);
+  };
 
   // When course has loaded in
   if (course) {
@@ -18,6 +29,7 @@ const Course = ({ course, subscription }) => {
         duration={`${course.sessions[sessionId].duration} seconds`}
         key={sessionId}
         locked={index > 1 && subscription.active === false}
+        handlePlay={e => handlePlay(sessionId, e)}
       />
     ));
   }
@@ -34,6 +46,7 @@ const Course = ({ course, subscription }) => {
       <ul className="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
         {sessionCards}
       </ul>
+      {currentTrack && (<AudioPlayer />)}
     </div>
   );
 };
@@ -45,11 +58,18 @@ Course.propTypes = {
     PropTypes.string,
   ]).isRequired,
   subscription: PropTypes.shape({ active: PropTypes.bool }).isRequired,
+  currentTrack: PropTypes.oneOf([PropTypes.string, PropTypes.bool]),
+  setTrack: PropTypes.func.isRequired,
+};
+
+Course.defaultProps = {
+  currentTrack: false,
 };
 
 const mapStateToProps = (state, ownProps) => ({
   course: state.courses[ownProps.match.params.course_id],
   subscription: state.user.subscription,
+  currentTrack: state.currentTrack,
 });
 
-export default connect(mapStateToProps)(Course);
+export default connect(mapStateToProps, { setTrack })(Course);

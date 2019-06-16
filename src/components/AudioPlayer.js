@@ -11,7 +11,7 @@ const AudioPlayer = ({ currentTrack }) => (
 );
 
 AudioPlayer.propTypes = {
-  currentTrack: PropTypes.oneOf([PropTypes.string, PropTypes.bool]),
+  currentTrack: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 };
 
 AudioPlayer.defaultProps = {

@@ -1,22 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Shojumaru&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700|Shojumaru:400&display=swap');
 
-$mdc-typography-styles-headline4: (font-family: unquote("Shojumaru, cursive"));
-$mdc-typography-styles-headline6: (font-family: unquote("Nunito, sans-serif"), font-weight: 700, margin-bottom: 3px);
-$mdc-typography-styles-subtitle2: (font-family: unquote("Nunito, sans-serif"), margin-top: 3px);
+$mdc-typography-font-family: 'Source Sans Pro', sans-serif;;
 
 @import "~@material/typography/mdc-typography";
 @import "~@material/elevation/mdc-elevation";
 @import "~@material/fab/mdc-fab";
 @import "~@material/list/mdc-list";
 
-html,
-body,
-#root {
-  height: 100%;
-}
-
 body {
   background-color: #f5f5f5;
+  color: #303030;
   margin: 0;
 }
 
@@ -29,11 +22,17 @@ a {
 }
 
 .layout {
-  margin-bottom: 54px;
+  margin-bottom: 53px;
+}
+
+.page-title {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 900;
+  margin-left: 20px;
 }
 
 //login page
-.wrapper {
+.login-page {
   height: 100%;
   width: 100%;
   display: flex;
@@ -43,6 +42,10 @@ a {
 
 .ninja-animation {
   width: 100%;
+}
+
+.logo {
+  font-family: 'Shojumaru', cursive;
 }
 
 .socials {
@@ -94,15 +97,15 @@ a {
   color: white;
   padding: 50px 10px 10px 30px;
   box-sizing: border-box;
-}
 
-//back button
-.mdc-fab {
-  @include mdc-fab-accessible(white);
-  position:fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
+  .title {
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+
+  .subtitle {
+    margin: 3px 0;
+  }
 }
 
 //session list in course page
@@ -126,6 +129,50 @@ a {
   font-size: 18px;
 }
 
+//library page
+.courses {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 70px;
+}
+
+.course {
+  margin: 8px;
+  flex: 1 1 40%;
+
+  img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 3px;
+  }
+
+  h2 {
+    margin: 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #303030;
+  }
+
+  p {
+    margin: 0 10px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #303030;
+  }
+}
+
+//back button
+.mdc-fab {
+  @include mdc-fab-accessible(white);
+  position:fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
 //navigation
 .tabs {
   position: fixed;
@@ -145,7 +192,7 @@ a {
     text-align: center;
     font-size: 0.8rem;
     color: #afb4b7;
-    font-family: Nunito, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
   }
 
   .tab .active {

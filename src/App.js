@@ -1,38 +1,44 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import ProtectedRoute from './components/ProtectedRoute';
 import HomePage from './pages/HomePage';
-import Library from './pages/Library';
-import Course from './pages/Course';
+import CoursePage from './pages/CoursePage';
+import Library from './pages/LibraryPage';
 import LoginPage from './pages/LoginPage';
-import { authenticate, getCourses } from './actions';
+import ProgressPage from './pages/ProgressPage';
+import ProfilePage from './pages/ProfilePage';
+import TimerPage from './pages/TimerPage';
+import Tabs from './components/Tabs';
+import { authenticate } from './actions';
 
 
 // eslint-disable-next-line no-shadow
-const App = ({ authenticate, getCourses }) => {
+const App = ({ authenticate }) => {
   useEffect(() => {
     authenticate();
-    getCourses();
   });
 
   return (
     <Router>
-      <Switch>
+      <div className="layout">
         <ProtectedRoute exact path="/" component={HomePage} />
+        <ProtectedRoute path="/profile" component={ProfilePage} />
+        <ProtectedRoute path="/timer" component={TimerPage} />
+        <ProtectedRoute path="/progress" component={ProgressPage} />
         <ProtectedRoute exact path="/library" component={Library} />
-        <ProtectedRoute path="/library/:course_id" component={Course} />
+        <ProtectedRoute path="/library/:course_id" component={CoursePage} />
         <Route path="/login" component={LoginPage} />
-      </Switch>
+      </div>
+      <Tabs />
     </Router>
   );
 };
 
 App.propTypes = {
   authenticate: PropTypes.func.isRequired,
-  getCourses: PropTypes.func.isRequired,
 };
 
-export default connect(null, { authenticate, getCourses })(App);
+export default connect(null, { authenticate })(App);

@@ -5,17 +5,16 @@ import { Route, Redirect } from 'react-router-dom';
 
 const ProtectedRoute = ({
   component: Component, isAuthenticating, isAuthenticated, ...rest
-}) => (isAuthenticating
-  ? null
-  : (
-    <Route
-      {...rest}
-      render={props => (isAuthenticated
-        ? <Component {...props} />
-        : <Redirect to="/login" />
-      )
+}) => (
+  !isAuthenticating && (
+  <Route
+    {...rest}
+    render={props => (isAuthenticated
+      ? <Component {...props} />
+      : <Redirect to="/login" />
+    )
       }
-    />
+  />
   )
 );
 

@@ -9,6 +9,7 @@ const initialState = {
   isAuthenticating: true,
   isAuthenticated: false,
   courses: {},
+  currentTrack: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -34,6 +35,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
       };
+    case 'SET_TRACK':
+      return {
+        ...state,
+        currentTrack: action.payload,
+      };
+      // console.log(action.payload);
     default:
       return state;
   }
@@ -44,7 +51,7 @@ const store = createStore(
   compose(
     applyMiddleware(thunk),
     // eslint-disable-next-line no-underscore-dangle
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   ),
 );
 

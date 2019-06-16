@@ -3,12 +3,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Item from '../components/Item';
+import AudioPlayer from '../components/AudioPlayer';
 import BackButton from '../components/BackButton';
+import { setTrack } from '../actions';
 
-
-// eslint-disable-next-line no-shadow
-const CoursePage = ({ course, subscription }) => {
+const CoursePage = ({
+  // eslint-disable-next-line no-shadow
+  course, subscription, currentTrack, setTrack,
+}) => {
   let sessionCards;
+
+  // Set and play the track
+  const handlePlay = (sessionId, e) => {
+    e.preventDefault();
+    setTrack(course._id, sessionId);
+  };
 
   // When course has loaded in
   if (course) {
@@ -19,6 +28,7 @@ const CoursePage = ({ course, subscription }) => {
         duration={`${course.sessions[sessionId].duration} seconds`}
         locked={index > 1 && subscription.active === false}
         key={sessionId}
+        handlePlay={e => handlePlay(sessionId, e)}
       />
     ));
   }
@@ -33,22 +43,27 @@ const CoursePage = ({ course, subscription }) => {
       <ul className="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
         {sessionCards}
       </ul>
+      {currentTrack && (<AudioPlayer />)}
     </div>
   );
 };
 
 
 CoursePage.propTypes = {
-  course: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.string,
-  ]).isRequired,
+  course: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   subscription: PropTypes.shape({ active: PropTypes.bool }).isRequired,
+  currentTrack: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  setTrack: PropTypes.func.isRequired,
+};
+
+CoursePage.defaultProps = {
+  currentTrack: false,
 };
 
 const mapStateToProps = (state, ownProps) => ({
   course: state.courses[ownProps.match.params.course_id],
   subscription: state.user.subscription,
+  currentTrack: state.currentTrack,
 });
 
-export default connect(mapStateToProps)(CoursePage);
+export default connect(mapStateToProps, { setTrack })(CoursePage);

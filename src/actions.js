@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const authenticate = () => dispatch => axios('https://localhost:8080/api/user', {
+const authenticate = () => dispatch => axios('https://moment23.amin.nu/api/user', {
   method: 'get',
   withCredentials: true,
 }).then((response) => {
@@ -12,7 +12,7 @@ const authenticate = () => dispatch => axios('https://localhost:8080/api/user', 
 
 
 const getCourses = () => (dispatch) => {
-  axios('https://localhost:8080/api/courses', {
+  axios('https://moment23.amin.nu/api/courses', {
     method: 'get',
     withCredentials: true,
   }).then((response) => {

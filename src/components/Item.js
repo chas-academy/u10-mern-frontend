@@ -6,17 +6,19 @@ const Item = ({
 }) => (
   <Fragment>
     <li className={`mdc-list-item ${locked ? 'mdc-list-item--disabled' : ''}`}>
-      {locked
-        ? <span className="mdc-list-item__graphic material-icons">lock</span>
-        : <span className="mdc-list-item__graphic">{index}</span>
-        }
-      <span className="mdc-list-item__text">
-        <span className="mdc-list-item__primary-text">{title}</span>
-        <span className="mdc-list-item__secondary-text">{duration}</span>
-      </span>
-      {handlePlay
-          && <button type="button" className="mdc-list-item__meta material-icons" onClick={handlePlay}>play_circle_filled</button>
-        }
+      <button className="clickable-item" type="button" onClick={handlePlay}>
+        {locked
+          ? <span className="mdc-list-item__graphic material-icons">lock</span>
+          : <span className="mdc-list-item__graphic">{index}</span>
+          }
+        <span className="mdc-list-item__text">
+          <span className="mdc-list-item__primary-text">{title}</span>
+          <span className="mdc-list-item__secondary-text">{duration}</span>
+        </span>
+        {handlePlay
+            && <span className="mdc-list-item__meta material-icons">play_circle_filled</span>
+          }
+      </button>
     </li>
     <li role="separator" className="mdc-list-divider mdc-list-divider--padded" />
   </Fragment>

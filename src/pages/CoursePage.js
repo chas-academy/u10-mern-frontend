@@ -40,7 +40,7 @@ const CoursePage = ({
         <h1 className="mdc-typography--headline5 title">Basics</h1>
         <p className="mdc-typography--subtitle2 subtitle">Live happier and healthier by learning the fundamentals of meditation and mindfulness.</p>
       </div>
-      <ul className="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
+      <ul id="session-list" className="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
         {sessionCards}
       </ul>
       {currentTrack && (<AudioPlayer />)}

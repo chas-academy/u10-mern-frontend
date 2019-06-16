@@ -13,10 +13,6 @@ body {
   margin: 0;
 }
 
-button {
-  all: unset; // To remove default styling of buttons
-}
-
 a {
   text-decoration: none;
 }
@@ -127,6 +123,24 @@ a {
 
 .mdc-list-item__graphic.material-icons {
   font-size: 18px;
+}
+
+.clickable-item {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  display:inherit;
+  padding: 0 16px;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  width: 100%;
+  text-align: left;
+}
+
+#session-list > .mdc-list-item {
+  padding: 0px;
 }
 
 //library page

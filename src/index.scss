@@ -125,24 +125,6 @@ a {
   font-size: 18px;
 }
 
-.clickable-item {
-  font: inherit;
-  color: inherit;
-  border: none;
-  background-color: transparent;
-  display:inherit;
-  padding: 0 16px;
-  align-items: center;
-  justify-content: flex-start;
-  overflow: hidden;
-  width: 100%;
-  text-align: left;
-}
-
-#session-list > .mdc-list-item {
-  padding: 0px;
-}
-
 //library page
 .courses {
   list-style: none;

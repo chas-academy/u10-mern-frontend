@@ -5,20 +5,25 @@ const Item = ({
   index, title, duration, locked, handlePlay,
 }) => (
   <Fragment>
-    <li className={`mdc-list-item ${locked ? 'mdc-list-item--disabled' : ''}`}>
-      <button className="clickable-item" type="button" onClick={handlePlay}>
-        {locked
-          ? <span className="mdc-list-item__graphic material-icons">lock</span>
-          : <span className="mdc-list-item__graphic">{index}</span>
-          }
-        <span className="mdc-list-item__text">
-          <span className="mdc-list-item__primary-text">{title}</span>
-          <span className="mdc-list-item__secondary-text">{duration}</span>
-        </span>
-        {handlePlay
-            && <span className="mdc-list-item__meta material-icons">play_circle_filled</span>
-          }
-      </button>
+    <li
+      className={`mdc-list-item ${locked ? 'mdc-list-item--disabled' : ''}`}
+      tabIndex={index === 1 ? '0' : undefined} // set tabIndex to 0 only on first li, as per MDC web docs on lists
+      onKeyDown={handlePlay}
+      onClick={handlePlay}
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+      role="button"
+    >
+      {locked
+        ? <span className="mdc-list-item__graphic material-icons">lock</span>
+        : <span className="mdc-list-item__graphic">{index}</span>
+        }
+      <span className="mdc-list-item__text">
+        <span className="mdc-list-item__primary-text">{title}</span>
+        <span className="mdc-list-item__secondary-text">{duration}</span>
+      </span>
+      {handlePlay
+          && <span className="mdc-list-item__meta material-icons">play_circle_filled</span>
+        }
     </li>
     <li role="separator" className="mdc-list-divider mdc-list-divider--padded" />
   </Fragment>

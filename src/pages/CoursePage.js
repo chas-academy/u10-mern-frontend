@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { MDCList } from '@material/list';
 
 import Item from '../components/Item';
 import AudioPlayer from '../components/AudioPlayer';
 import BackButton from '../components/BackButton';
 import { setTrack } from '../actions';
 
+
 const CoursePage = ({
   // eslint-disable-next-line no-shadow
   course, subscription, currentTrack, setTrack,
 }) => {
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-vars
+    const list = new MDCList(document.querySelector('.mdc-list'));
+  });
+
   let sessionCards;
 
   // Set and play the track
   const handlePlay = (sessionId, e) => {
     e.preventDefault();
-    setTrack(course._id, sessionId);
+    // On click, Space key or Enter key
+    if (e.type === 'click' || e.keyCode === 32 || e.keyCode === 13) {
+      setTrack(course._id, sessionId);
+    }
   };
 
   // When course has loaded in

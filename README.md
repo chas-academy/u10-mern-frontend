@@ -6,7 +6,7 @@
 
 3. Run `npm start`.
 
-Note: You should setup your backend project and start it before running .
+Note: You should setup your backend project and start it before running this project.
 
 ## Available Scripts
 

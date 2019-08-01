@@ -37,9 +37,9 @@ const CoursePage = ({
         index={index + 1}
         title={course.sessions[sessionId].title}
         duration={secondsToMinutes(course.sessions[sessionId].duration)}
-        locked={index > 1 && subscription.active === false}
+        locked={!subscription.active}
         key={sessionId}
-        handlePlay={e => (index > 1 && subscription.active === false ? console.log('hi') : handlePlay(sessionId, e))}
+        handlePlay={(e) => { if (subscription.active) handlePlay(sessionId, e); }}
       />
     ));
   }

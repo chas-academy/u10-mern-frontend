@@ -5,6 +5,9 @@ const initialState = {
   user: {
     name: null,
     email: null,
+    subscription: {
+      active: false,
+    },
   },
   isAuthenticating: true,
   isAuthenticated: false,

@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { MDCList } from '@material/list';
 
 import Item from '../components/Item';
 import AudioPlayer from '../components/AudioPlayer';
@@ -13,17 +12,19 @@ const CoursePage = ({
   // eslint-disable-next-line no-shadow
   course, subscription, currentTrack, setTrack,
 }) => {
-  useEffect(() => {
-    // eslint-disable-next-line no-unused-vars
-    const list = new MDCList(document.querySelector('.mdc-list'));
-  });
-
   let sessionCards;
 
+  const secondsToMinutes = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time - minutes * 60;
+
+    return `${minutes} min ${seconds} sec`;
+  };
   // Set and play the track
   const handlePlay = (sessionId, e) => {
     e.preventDefault();
     // On click, Space key or Enter key
+
     if (e.type === 'click' || e.keyCode === 32 || e.keyCode === 13) {
       setTrack(course._id, sessionId);
     }
@@ -35,10 +36,10 @@ const CoursePage = ({
       <Item
         index={index + 1}
         title={course.sessions[sessionId].title}
-        duration={`${course.sessions[sessionId].duration} seconds`}
+        duration={secondsToMinutes(course.sessions[sessionId].duration)}
         locked={index > 1 && subscription.active === false}
         key={sessionId}
-        handlePlay={e => handlePlay(sessionId, e)}
+        handlePlay={e => (index > 1 && subscription.active === false ? console.log('hi') : handlePlay(sessionId, e))}
       />
     ));
   }

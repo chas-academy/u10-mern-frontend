@@ -7,7 +7,7 @@ const Item = ({
   <Fragment>
     <li
       className={`mdc-list-item ${locked ? 'mdc-list-item--disabled' : ''}`}
-      tabIndex={index === 1 ? '0' : undefined} // set tabIndex to 0 only on first li, as per MDC web docs on lists
+      tabIndex={index} // set tabIndex to 0 only on first li, as per MDC web docs on lists
       onKeyDown={handlePlay}
       onClick={handlePlay}
       // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role

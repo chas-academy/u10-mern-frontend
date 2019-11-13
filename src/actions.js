@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const authenticate = () => dispatch => axios('https://localhost:8080/api/user', {
+const authenticate = () => dispatch => axios(`${process.env.REACT_APP_BACKEND_URL}/user`, {
   method: 'get',
   withCredentials: true,
 }).then((response) => {
@@ -12,7 +12,7 @@ const authenticate = () => dispatch => axios('https://localhost:8080/api/user', 
 
 
 const getCourses = () => (dispatch) => {
-  axios('https://localhost:8080/api/courses', {
+  axios(`${process.env.REACT_APP_BACKEND_URL}/courses`, {
     method: 'get',
     withCredentials: true,
   }).then((response) => {
@@ -41,6 +41,7 @@ const getCourses = () => (dispatch) => {
 };
 
 const setTrack = (courseId, sessionId) => (dispatch) => {
+  // Using live API URL instead of trying to set up locally
   const track = `https://moment23.amin.nu/api/courses/${courseId}/sessions/${sessionId}/audio`;
   dispatch({ type: 'SET_TRACK', payload: track });
 };

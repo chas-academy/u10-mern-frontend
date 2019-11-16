@@ -7,13 +7,13 @@ const LoginPage = () => (
     <img src={ninjaAnimation} alt="" className="ninja-animation" />
     <h1 className="mdc-typography--headline4 logo">Mern</h1>
     <div className="socials">
-      <a href="https://moment23.amin.nu/auth/facebook">
+      <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/facebook`}>
         <button type="button" className="social-button">
           <span className="facebook-button__icon" />
           <span className="social-button__text">Sign in with Facebook</span>
         </button>
       </a>
-      <a href="https://moment23.amin.nu/auth/google">
+      <a href={`${process.env.REACT_APP_BACKEND_URL}/auth/google`}>
         <button type="button" className="social-button">
           <span className="google-button__icon" />
           <span className="social-button__text">Sign in with Google</span>
